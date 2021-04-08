@@ -1,3 +1,10 @@
-{{ title }}
-<button (click)="playSound()">play sound</button>
+<div class="notes-container">
+  <div *ngFor="let note of allNotes" 
+      (click)="handleNoteClicked(note)"
+      class="note">
+    <span class="note-name">{{ note.name }}</span>
+    <img [src]="note.imageURL()">
+  </div>
+  <button (click)="playSound()">play sound</button>
+</div>
 <router-outlet></router-outlet>
