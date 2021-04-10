@@ -1,11 +1,16 @@
 
 export class Note {
 
-  constructor(private code: string,
-              public name: string) { }
+  audio: HTMLAudioElement;
 
-  soundURL(): string {
-    return `assets/sound/${this.code}.mp3`;
+  constructor(private code: string,
+              public name: string) {
+
+    this.audio = new Audio(`assets/sound/${this.code}.mp3`);
+  }
+
+  play() {
+    this.audio.play();
   }
 
   imageURL(): string {

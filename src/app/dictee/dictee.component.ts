@@ -22,16 +22,16 @@ export class DicteeComponent implements OnInit {
   }
 
   listenToQuestion(): void {
-    this.soundService.playNote(this.noteToGuess);
+    this.noteToGuess.play();
   }
 
   handleNoteSelected(note: Note): void {
     if (note === this.noteToGuess) {
-      this.soundService.playNote(note);
+      note.play();
       this.score++;
       this.showSuccess = true;
-      if (this.score === 10) {
-        setTimeout(() => this.soundService.playSuccess(), 2000);
+      if (this.score === 1) {
+        setTimeout(() => this.soundService.playSuccess(), 3000);
         this.restart();
       }
       setTimeout(() => this.nextNoteToGuess(), 2000);

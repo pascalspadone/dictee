@@ -26,10 +26,8 @@
 }
 
 .listen-to-question {
-    width: 100px;
+    padding: 0;
     font-size: 64px;
-    border: 1px solid grey;
-    border-radius: 4px;
 
     &:hover {
         background-color: lavender;
@@ -37,4 +35,12 @@
     &.error {
         background-color: indianred;
     }
+}
+
+.button-or-success-note app-note,
+.listen-to-question {
+  width: 165px;
+  height: 85px;
+  border: 1px solid grey;
+  border-radius: 4px;
 }

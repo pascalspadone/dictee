@@ -6,23 +6,26 @@ import { Note } from '../note/note';
 })
 export class SoundService {
 
-  constructor() { }
 
-  playNote(note: Note): void {
-    this.play(note.soundURL());
+  errorAudio: HTMLAudioElement;
+  successAudio: HTMLAudioElement;
+
+  constructor() {
+    // https://stackoverflow.com/a/54119854
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    // tslint:disable-next-line: no-unused-expression
+    new AudioContextClass();
+
+    this.errorAudio = new Audio('assets/sound/error.mp3');
+    this.successAudio = new Audio('assets/sound/success.mp3');
   }
 
   playError(): void {
-    this.play('assets/sound/error.mp3');
+    this.errorAudio.play();
   }
 
   playSuccess(): void {
-    this.play('assets/sound/success.mp3');
+    this.successAudio.play();
   }
 
-  private play(soundURL: string): void {
-    const audio = new Audio();
-    audio.addEventListener('canplaythrough', () => audio.play());
-    audio.src = soundURL;
-  }
 }
