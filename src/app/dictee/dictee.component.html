@@ -1,1 +1,13 @@
-<p>dictee works!</p>
+<div class="score">
+    Score : {{ score }}
+</div>
+<div class="guess-button-and-notes">
+    <div class="button-or-success-note">
+        <app-note *ngIf="showSuccess" [note]="noteToGuess"></app-note>
+        <button *ngIf="!showSuccess"  
+                (click)="listenToQuestion()" 
+                [class]="{ 'error': showError }"
+                class="listen-to-question">?</button>    
+    </div>
+    <app-note-selector (noteSelected)="handleNoteSelected($event)"></app-note-selector>
+</div>

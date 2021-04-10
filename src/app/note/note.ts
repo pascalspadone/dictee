@@ -12,12 +12,6 @@ export class Note {
     return `assets/image/${this.code}.png`;
   }
 
-  play(): void {
-    const audio = new Audio();
-    audio.addEventListener('canplaythrough', () => audio.play());
-    audio.src = this.soundURL();
-  }
-
 }
 
 export const ALL_NOTES = [

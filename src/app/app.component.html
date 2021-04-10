@@ -1,10 +1,2 @@
-<div class="notes-container">
-  <div *ngFor="let note of allNotes" 
-      (click)="handleNoteClicked(note)"
-      class="note">
-    <span class="note-name">{{ note.name }}</span>
-    <img [src]="note.imageURL()">
-  </div>
-  <button (click)="playSound()">play sound</button>
-</div>
+<app-dictee></app-dictee>
 <router-outlet></router-outlet>

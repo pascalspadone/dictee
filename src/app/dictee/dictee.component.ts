@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SoundService } from '../core/sound.service';
+import { ALL_NOTES, Note } from '../note/note';
 
 @Component({
   selector: 'app-dictee',
@@ -7,9 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DicteeComponent implements OnInit {
 
-  constructor() { }
+  noteToGuess!: Note;
+  score!: number;
+  showSuccess = false;
+  showError = false;
 
-  ngOnInit(): void {
+  constructor(private soundService: SoundService) {
   }
 
+  ngOnInit(): void {
+    this.restart();
+  }
+
+  listenToQuestion(): void {
+    this.soundService.playNote(this.noteToGuess);
+  }
+
+  handleNoteSelected(note: Note): void {
+    if (note === this.noteToGuess) {
+      this.soundService.playNote(note);
+      this.score++;
+      this.showSuccess = true;
+      if (this.score === 10) {
+        setTimeout(() => this.soundService.playSuccess(), 2000);
+        this.restart();
+      }
+      setTimeout(() => this.nextNoteToGuess(), 2000);
+    } else {
+      this.soundService.playError();
+      this.showError = true;
+      this.restart();
+      setTimeout(() => this.showError = false, 2000);
+    }
+  }
+
+  private restart(): void {
+    this.noteToGuess = ALL_NOTES[0]; // always start with C-4
+    this.score = 0;
+
+  }
+
+  private nextNoteToGuess(): void {
+    this.showSuccess = false;
+    this.noteToGuess = ALL_NOTES[Math.floor(Math.random() * ALL_NOTES.length)];
+  }
 }
