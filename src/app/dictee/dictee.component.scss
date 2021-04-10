@@ -6,6 +6,7 @@
 
 .score {
     font-size: 24px;
+    padding: 32px;
 }
 
 .guess-button-and-notes {
@@ -21,7 +22,7 @@
     margin-right: 100px;
 
     app-note {
-        background-color: greenyellow;
+        background-color: #def1de;
     }
 }
 
@@ -29,7 +30,7 @@
     padding: 0;
     font-size: 64px;
 
-    &:hover {
+    &:active {
         background-color: lavender;
     }
     &.error {

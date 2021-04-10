@@ -30,11 +30,15 @@ export class DicteeComponent implements OnInit {
       note.play();
       this.score++;
       this.showSuccess = true;
-      if (this.score === 1) {
-        setTimeout(() => this.soundService.playSuccess(), 3000);
-        this.restart();
+      if (this.score === 10) {
+        setTimeout(() => {
+          this.soundService.playSuccess();
+          this.showSuccess = false;
+          this.restart();
+        }, 2000);
+      } else {
+        setTimeout(() => this.nextNoteToGuess(), 2000);
       }
-      setTimeout(() => this.nextNoteToGuess(), 2000);
     } else {
       this.soundService.playError();
       this.showError = true;
@@ -44,7 +48,7 @@ export class DicteeComponent implements OnInit {
   }
 
   private restart(): void {
-    this.noteToGuess = ALL_NOTES[0]; // always start with C-4
+    this.noteToGuess = ALL_NOTES[7]; // always start with C-4
     this.score = 0;
 
   }

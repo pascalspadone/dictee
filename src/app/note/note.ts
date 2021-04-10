@@ -20,12 +20,12 @@ export class Note {
 }
 
 export const ALL_NOTES = [
-  new Note('c-4', 'do'),
-  new Note('d-4', 'ré'),
-  new Note('e-4', 'mi'),
-  new Note('f-4', 'fa'),
-  new Note('g-4', 'sol'),
-  new Note('a-4', 'la'),
-  new Note('b-4', 'si'),
   new Note('c-5', 'do'),
+  new Note('b-4', 'si'),
+  new Note('a-4', 'la'),
+  new Note('g-4', 'sol'),
+  new Note('f-4', 'fa'),
+  new Note('e-4', 'mi'),
+  new Note('d-4', 'ré'),
+  new Note('c-4', 'do'),
 ];
